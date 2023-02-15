@@ -1,0 +1,17 @@
+﻿@model ListItem
+@{
+    var LineBreak = false;
+    if (ViewBag.LineBreak == true)
+    {
+        LineBreak = true;
+    }
+}
+@Html.CheckBoxFor(m => m.IsChecked)
+@Html.LabelFor(m => m.IsChecked, Model.ItemText)
+@Html.HiddenFor(m => m.ItemId)
+@Html.HiddenFor(m => m.ItemText)
+&nbsp;
+@if (LineBreak)
+{
+    <br />
+}

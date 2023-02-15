@@ -1,0 +1,91 @@
+﻿@{
+    var lOptions = LayoutOptions.Value;
+}
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <partial name="_Head" />
+    @RenderSection("Header", required: false)
+</head>
+<body class="@(ViewBag.Skin ==null ?"mod-bg-1":ViewBag.Skin)">
+    <partial name="../Scripts/LoadingSaving" />
+    <div class="page-wrapper">
+        <div class="page-inner">
+            @if (lOptions.LeftPanel)
+            {
+                <partial name="_LeftPanel" />
+            }
+            <div class="page-content-wrapper">
+                @if (lOptions.TopPanel)
+                {
+                    <header class="page-header" role="banner">
+                        <partial name="_TopPanel" />
+                    </header>
+                }
+                <main id="js-page-content" role="main" class="page-content">
+                    @if (lOptions.Breadcrumb)
+                    {
+                        @if (ViewBag.HideBreadcrumb == null)
+                        {
+                            <ol class="breadcrumb page-breadcrumb">
+                                <li class="breadcrumb-item">
+                                    <a href="/" localize="homepage">
+                                        <i class="fal fa-home mr-1 fs-md"></i>
+                                        Anasayfa
+                                    </a>
+                                </li>
+                                @RenderSection("Navigation", false)
+                                @*<li class="slide-backdrop"
+                                        data-action="toggle"
+                                        data-class="slide-on-mobile-right-show position-absolute pos-top float-right"
+                                        data-target="#js-slide-right">
+                                        <fa icon="fa fa-tasks"></fa>
+                                    </li>
+                                <li class="position-absolute pos-top pos-right d-none d-sm-block">
+                                        <span class="js-get-date">
+                                            @DateTime.Now.ToString(System.Globalization.CultureInfo.CurrentCulture)
+                                        </span>
+                                    </li>*@
+                            </ol>
+                        }
+                        else
+                        {
+                            IgnoreSection("Navigation");
+                        }
+                    }
+                    else
+                    {
+                        IgnoreSection("Navigation");
+                    }
+                    @RenderSection("PageHeading", required: false)
+                    @RenderBody()
+
+                </main>
+                <partial name="../Page/ContentOverlay" />
+                @if (lOptions.Footer)
+                {
+                    <partial name="../Page/Footer" />
+                }
+                @*@if (lOptions.Organizations)
+                    {
+                        <partial name="Organizations" />
+                    }*@
+            </div>
+        </div>
+    </div>
+        @if (lOptions.ShortCut)
+        {
+            <partial name="../Modal/ShortCut" />
+        }
+        @if (lOptions.Messenger)
+        {
+            <partial name="../Modal/MessengerModal" />
+        }
+        @if (lOptions.Settings)
+        {
+            <partial name="../Modal/SettingsModal" />
+        }
+    <partial name="../Scripts/BasePlugins" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

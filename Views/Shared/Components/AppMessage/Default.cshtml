@@ -1,0 +1,13 @@
+﻿@inject IOptions<AppConfiguration> App
+@if (App.Value != null && App.Value.MessageShow && !string.IsNullOrEmpty(App.Value.MessageBody))
+{
+    <card class="mb-1">
+        <card-header class="text-danger">
+            <fa icon="fa fa-exclamation-triangle mr-1"></fa>
+            @App.Value.MessageTitle
+        </card-header>
+        <card-body>
+            @Html.Raw(App.Value.MessageBody)
+        </card-body>
+    </card>
+}

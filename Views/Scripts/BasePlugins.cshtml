@@ -1,0 +1,43 @@
+﻿<!-- base vendor bundle:
+DOC: if you remove pace.js from core please note on Internet Explorer some CSS animations may execute before a page is fully loaded, resulting 'jump' animations
++ pace.js (recommended)
++ jquery.js (core)
++ jquery-ui-cust.js (core)
++ popper.js (core)
++ bootstrap.js (core)
++ slimscroll.js (extension)
++ app.navigation.js (core)
++ ba-throttle-debounce.js (core)
++ waves.js (extension)
++ smartpanels.js (extension)
++ src/../jquery-snippets.js (core) -->
+<script src="@(Client.Value.CdnUrl)/tapps/js/vendors.bundle.js"></script>
+<script src="@(Client.Value.CdnUrl)/tapps/js/app.bundle.js"></script>
+<script src="@(Client.Value.CdnUrl)/lib/fontawesome/5.14.0/js/all.min.js"></script>
+
+<script src="@(Client.Value.CdnUrl)/tapps/js/i18n/i18n.js"></script>
+<partial name="../Scripts/Alerts" />
+<script src="@(Client.Value.CdnUrl)/tapps/js/dependency/moment/moment.js"></script>
+<script src="@(Client.Value.CdnUrl)/lib//moment/2.22.2/locale/tr.js"></script>
+
+<script src="@(Client.Value.CdnUrl)/tapps/js/formplugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+@*<script src="@(Client.Value.CdnUrl)/lib/bootstrap-datepicker/1.0.9/bootstrap-datepicker.js"></script>
+    <script src="@(Client.Value.CdnUrl)/lib/bootstrap-datepicker/1.0.9/bootstrap-datepicker.tr.js"></script>*@
+<script src="@(Client.Value.CdnUrl)/lib/bootstrap-daterangepicker/3.0.5/bootstrap-daterangepicker.js"></script>
+<script src="@(Client.Value.CdnUrl)/lib/bootstrap-tour/v0.11.0/bootstrap-tour.js"></script>
+
+
+<!-- Custom scripts -->
+
+<script src="@(Client.Value.CdnUrl)/tapps/smartadmin.custom.js" asp-append-version="true"></script>
+
+<script src="@(Client.Value.CdnUrl)/scripts/toltek/toltek.utils.js" asp-append-version="true"></script>
+<script src="@(Client.Value.CdnUrl)/scripts/toltek/toltek.utils.popbox.js" asp-append-version="true"></script>
+<script src="@(Client.Value.CdnUrl)/scripts/toltek/toltek.forms.js" asp-append-version="true"></script>
+
+<script no-cdn src="~/js/site.js" asp-append-version="true"></script>
+<script src="@(Client.Value.CdnUrl)/tapps/js/statistics/easypiechart/easypiechart.bundle.js"></script>
+<partial name="../TopPanel/NotificationModal" />
+
+

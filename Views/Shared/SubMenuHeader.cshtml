@@ -1,0 +1,60 @@
+﻿@model MenuBase
+@{
+    var mode = Model.MenuItems.FirstOrDefault(t => t.Name == Model.Mode);
+    var showIcon = true;
+    if (ViewBag.ShowIcon != null && ViewBag.ShowIcon == false)
+    {
+        showIcon = false;
+    }
+}
+<button-group>
+    <button-dropdown color="Primary" outline="true" size="Small" class="ml-2">
+        <text>
+            @if (mode != null)
+            {
+                @if (showIcon)
+                {
+                    <fa icon="@mode.Icon" class="text-danger" />
+                }
+                <span class="text-danger">@mode.Title </span>
+                @if (mode.Badge > 0)
+                {
+                    <span class="text-danger">[@mode.Badge]</span>
+                }
+            }
+            else
+            {
+                <fa icon="book" class="text-danger" />
+                <span class="text-danger">Bilgiler</span>
+            }
+        </text>
+
+        @foreach (var g in Model.MenuItems.OrderBy(o => o.ItemGroup).GroupBy(t => t.ItemGroup))
+        {
+            foreach (var item in Model.MenuItems.Where(m => m.ItemGroup == g.Key).OrderBy(o => o.ItemIndex))
+            {
+                if (item.ShowHeader.Value && (item.ShowAlways.Value || item.Badge > 0))
+                {
+                    if (item.Name == Model.Mode)
+                    {
+                        item.ColorLabel = "text-danger";
+                    }
+                    <a href="@item.Url" aria-expanded="true">
+                        <i class="@item.Icon @item.ColorLabel"></i>
+                        <span class="@item.ColorLabel">@item.Title</span>
+                        @if (item.Badge > 0)
+                        {
+                            <small class="float-right badge border border-@item.ColorLabel">@item.Badge</small>
+                        }
+                    </a>
+                }
+            }
+            <divider />
+        }
+
+    </button-dropdown>
+</button-group>
+
+
+
+

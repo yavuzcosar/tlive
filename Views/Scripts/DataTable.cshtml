@@ -1,0 +1,23 @@
+﻿<!--DataTable -->
+<script src="@(Client.Value.CdnUrl)/tapps/js/datagrid/datatables/datatables.bundle.js"></script>
+<script src="@(Client.Value.CdnUrl)/tapps/js/datagrid/datatables/datatables.export.js"></script>
+<script>
+    $(document).ready(function () {
+        LoadDataTable();
+    });
+    function LoadDataTable() {
+         var oTable = $('#DataTable').DataTable({
+            sDom: 'tlripb',
+            colReorder: true,
+             buttons: [
+                 'copy', 'excel', 'pdf'
+             ],
+            "language": {
+                "url": "@(Client.Value.CdnUrl)/tapps/js/datagrid/datatables/Turkish.json"
+            }
+        });
+        $('#Search').on('keyup change', function () {
+            oTable.search($(this).val()).draw();
+        })
+    }
+</script>

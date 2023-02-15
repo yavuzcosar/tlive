@@ -1,0 +1,27 @@
+﻿<!-- we need this logo when user switches to nav-function-top -->
+<partial name="../LeftPanel/Logo" />
+<partial name="../TopPanel/NavMenu" />
+@*<partial name="../TopPanel/Search" />*@
+<div class="ml-auto d-flex">
+    <partial name="../TopPanel/RoleSelector" />
+    @* <partial name="../TopPanel/Portal" />*@
+
+    @if (User.Identity.IsAuthenticated)
+    {
+        <partial name="../TopPanel/App" />
+        <partial name="../TopPanel/Notification" />
+        @if (LayoutOptions.Value.Settings)
+        {
+            <partial name="../TopPanel/Settings" />
+        }
+        <partial name="../TopPanel/User" />
+    }
+    else
+    {
+        <div>
+            <a asp-controller="Account" asp-action="Login" class="header-icon header-icon-bar" loc-title="Giriş Yap">
+                <i class="fas fa-sign-in"></i>
+            </a>
+        </div>
+    }
+</div>

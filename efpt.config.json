@@ -1,0 +1,204 @@
+﻿{
+   "CodeGenerationMode": 0,
+   "ContextClassName": "LiveDb",
+   "ContextNamespace": "",
+   "DefaultDacpacSchema": null,
+   "FilterSchemas": false,
+   "IncludeConnectionString": false,
+   "ModelNamespace": "",
+   "OutputContextPath": "",
+   "OutputPath": "Entity",
+   "ProceduresReturnList": false,
+   "ProjectRootNamespace": "Toltek.Live.Data",
+   "Schemas": null,
+   "SelectedHandlebarsLanguage": 0,
+   "SelectedToBeGenerated": 2,
+   "Tables": [
+      {
+         "Name": "[App].[Service]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[App].[ServiceLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Company].[Company]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Company].[Department]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Company].[Unit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Course].[Course]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Course].[Group]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[Meeting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[MeetingGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[Metric]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[MetricData]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[Room]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[RoomFile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[RoomGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[RoomSchedule]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[Server]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerApp]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerInfo]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerLive]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerRecording]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerStats]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerTarget]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[Session]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionAudit]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionFile]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionGroup]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionLog]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionPackage]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionParticipant]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionSetting]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionStats]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionType]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[SessionViewer]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[Tenant]",
+         "ObjectType": 0
+      },
+      {
+         "Name": "[Live].[ServerToday]",
+         "ObjectType": 3
+      },
+      {
+         "Name": "[Company].[StatsAll]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Company].[SyncAll]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Company].[SyncMeta]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Live].[SessionPublished]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Live].[SyncMeetings]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Live].[SyncRooms]",
+         "ObjectType": 1
+      },
+      {
+         "Name": "[Live].[SyncSessions]",
+         "ObjectType": 1
+      }
+   ],
+   "UiHint": "OYS.EbyuLive",
+   "UseBoolPropertiesWithoutDefaultSql": false,
+   "UseDatabaseNames": true,
+   "UseDbContextSplitting": false,
+   "UseFluentApiOnly": false,
+   "UseHandleBars": false,
+   "UseInflector": false,
+   "UseLegacyPluralizer": false,
+   "UseNoConstructor": false,
+   "UseNoNavigations": false,
+   "UseNoObjectFilter": false,
+   "UseNodaTime": false,
+   "UseNullableReferences": false,
+   "UseSpatial": false
+}

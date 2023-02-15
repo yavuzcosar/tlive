@@ -1,0 +1,102 @@
+﻿@model AnnounceList
+@{
+    ViewData["Title"] = "Duyurular";
+    ViewBag.Menu = "Announce";
+}
+<card class="page-card">
+    <card-header head="  @ViewBag.Title " icon="fa fa-bullhorn fa-2x mr-1" class="text-primary">
+        <div class="ml-auto" id="Buttons">
+            <a asp-action="Refresh">
+                <i class="ace-icon fa fa-sync ml-2"></i> Yenile
+            </a>
+            <a asp-action="ReadAll">
+                <i class="ace-icon fa fa-check ml-2"></i> Tümünü Okundu Yap
+            </a>
+        </div>
+    </card-header>
+    <card-body>
+        <table t-table="true">
+            <tbody>
+                <tr>
+                    <th class="hidden-xs" scope="col">
+                        Tarih
+                    </th>
+                    <th scope="col">
+                        Duyuru
+                    </th>
+                    <th class="hidden-xs" scope="col">Hedef</th>
+                    <th class="hidden-xs" scope="col">
+                        Kitle
+                    </th>
+                    <th class="hidden-xs" scope="col">Okundu</th>
+                </tr>
+                @foreach (var c in Model.Items)
+                {
+                    <tr>
+                        <td class="hidden-xs">
+                            @if (c.DateStart.HasValue)
+                            {
+                                @c.DateStart.ToFDate(false)
+                            }
+                            else
+                            {
+                                @c.CDate.ToFDate(false)
+                            }
+                        </td>
+                        <td>
+                            <a href="#announce-@(c.AnnounceId)" data-toggle="modal">
+                                <fa icon="check" if="@c.Readed"></fa>
+                                @c.Title
+                            </a>
+                            @if (c.FilesCount > 0)
+                            {
+                                <badge color="Primary" border="true" class="float-right ml-1" title="Dosyalar">
+                                   @c.FilesCount
+                                    <i class="fa fa-file"></i>
+                                </badge>
+                            }
+
+                        </td>
+                        <td class="hidden-xs">
+                            @Html.Raw(c.TargetRoles)
+                        </td>
+
+                        <td class="hidden-xs">
+                            @if (!string.IsNullOrEmpty(c.UnitName))
+                            {
+                                <badge border="true" color="Primary">@c.UnitName</badge>
+                            }
+                            @if (!string.IsNullOrEmpty(c.CourseName))
+                            {
+                                <badge border="true" color="Info">@c.CourseName</badge>
+                            }
+                        </td>
+                        <td>
+                            @if (!c.Readed)
+                            {
+                                <a asp-action="Read" asp-route-id="@c.AnnounceId" class="green">
+                                    <fa icon="check"></fa>
+                                   Okudum
+                                </a>
+                            }
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </card-body>
+</card>
+@foreach (var c in Model.Items)
+{
+    c.IsNotify = false;
+    <partial name="Modal" model="@c" />
+}
+@section Navigation
+{
+    <li class="breadcrumb-item">
+        <a asp-controller="Announce" asp-action="List">Duyurular</a>
+    </li>
+}
+
+
+

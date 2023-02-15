@@ -1,0 +1,32 @@
+﻿<aside class="page-sidebar page-sidebar-thin">
+    @if (LayoutOptions.Value.Logo)
+    {
+        <partial name="../LeftPanel/Logo" />
+    }
+    <!-- BEGIN PRIMARY NAVIGATION -->
+    <nav id="js-primary-nav" class="primary-nav" role="navigation">
+        @if (LayoutOptions.Value.MenuFilter)
+        {
+            <partial name="../LeftPanel/Filter" />
+        }
+        @if (LayoutOptions.Value.InfoCard)
+        {
+            <partial name="../LeftPanel/InfoCard" />
+        }
+        @if (LayoutOptions.Value.Menu)
+        {
+            <partial name="../LeftPanel/Navigation" />
+        }
+        @if (LayoutOptions.Value.MenuFilter)
+        {
+            <div class="filter-message js-filter-message bg-success-600"></div>
+        }
+    </nav>
+    <!-- END PRIMARY NAVIGATION -->
+    <!-- NAV FOOTER -->
+    @if (LayoutOptions.Value.MenuFooter)
+    {
+        <partial name="../LeftPanel/Footer" />
+    }
+    <!-- END NAV FOOTER -->
+</aside>

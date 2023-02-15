@@ -1,0 +1,13 @@
+﻿<div class="page-logo" title="@Company.Value.Name">
+    @*data-toggle="modal" data-target="#modal-shortcut" multitenantlarda geçiş için *@
+    <a href="/" class="page-logo-link press-scale-down d-flex align-items-center">
+        <img data-html="@(Client.Value.CdnUrl)/tapps/img/logo.png" class="img-long"
+             src="@Theme.Value.LogoUrl.StorageFix(Storage.Value)"
+             alt="@Company.Value.CompanyName" aria-roledescription="logo" />
+        <img data-html="@(Client.Value.CdnUrl)/tapps/img/logo.png" class="img-short"
+             src="@Theme.Value.LogoShortUrl.StorageFix(Storage.Value)"
+             alt="@Company.Value.CompanyName" aria-roledescription="logo" />
+        @*<span class="page-logo-text mr-1">@Client.Value.ClientName </span>
+            <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>*@
+    </a>
+</div>

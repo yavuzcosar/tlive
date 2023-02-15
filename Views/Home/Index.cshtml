@@ -1,0 +1,66 @@
+﻿@using Toltek.Services.Dashboard
+@model IDashboard
+@{
+    ViewData["Title"] = "Anasayfa";
+    ViewBag.HideBreadcrumb = true;
+    ViewBag.ShowSettings = true;
+}
+@if (Model.Dashboard != null)
+{
+    <div class="Dashboard row" t-dash="@Model.Dashboard.DashboardId">
+        @foreach (var col in Model.Dashboard.Columns.OrderBy(o => o.ColumnOrder))
+        {
+            col.Widgets = Model.Dashboard.Widgets.OrderBy(o => o.Order).Where(t => t.ColumnId == col.ColumnId && t.Enable).ToList();
+            <div id="wc_@col.Name" t-column="@col.ColumnId" class="sortable col-xs-@col.SizeXs col-sm-@col.SizeSm col-md-@col.SizeMd col-lg-@col.SizeLg col-xl-@col.SizeXl">
+                @foreach (var w in col.Widgets)
+                {
+                    w.Mode = "Html";
+                    <div class="widget widget_@w.WidgetId" id="widget_@w.WidgetId" t-dash="@w.DashboardId" t-column="@col.ColumnId" t-widget="@w.WidgetId">
+                        @if (w.Box)
+                        {
+                            <card class="mb-2">
+                                <card-header icon="@w.BoxIcon" class="@w.BoxColor" head="@w.Title">
+                                    <div class="ml-auto">
+                                        <a id="@w.UWidgetId" class="mr-1 active" data-toggle="tooltip" data-title="Kapat"
+                                           t-action="widget-toogle" t-target="@(w.WidgetId)">
+                                            <fa set="fal" icon="times"></fa>
+                                        </a>
+                                        @*<a id="@w.UWidgetId" class="mr-1" data-toggle="tooltip" data-title="Ayarlar"
+                                               t-action="widget-settings" t-target="@(w.WidgetId)">
+                                                <fa set="fal" icon="cog"></fa>
+                                            </a>*@
+                                    </div>
+                                </card-header>
+                                <card-body class="p-0">
+                                    @await Component.InvokeAsync(w.Name, w)
+                                </card-body>
+                            </card>
+                        }
+                        else
+                        {
+                            @await Component.InvokeAsync(w.Name, w)
+                        }
+                    </div>
+                }
+            </div>
+        }
+    </div>
+}
+else
+{
+    <alert color="Info">
+        <a asp-controller="Home" asp-action="SeedDashboard" class="text-success">
+            Kayıtlı anasayfa bulunamadı, örnek verileri eklemek için tıklayın
+        </a>
+    </alert>
+}
+
+@section Scripts {
+    <script src="@(Client.Value.CdnUrl)/tapps/js/statistics/flot/flot.bundle.js"></script>
+    @foreach (var w in Model.Dashboard.Widgets.Where(t => t.Enable && t.HasScripts).ToList())
+    {
+        w.Mode = "Scripts";
+        @await Component.InvokeAsync(w.Name, w)
+    }
+    <script no-cdn src="~/js/Services/Dashboard.js" asp-append-version="true"></script>
+}

@@ -1,0 +1,44 @@
+﻿@{
+    var lOptions = LayoutOptions.Value;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>
+        @ViewBag.Title
+    </title>
+    <meta name="description" content="Toltek">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no, minimal-ui">
+    <link cdnify href="~/tapps/css/vendors.bundle.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/tapps/css/app.bundle.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/tapps/css/theme-demo.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/tapps/css/site.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/lib/fontawesome/5.14.0/css/all.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/tapps/css/fa-solid.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" href="@Theme.Value.FaviconUrl.StorageFix(Storage.Value)" />
+    <!-- toltek styles -->
+    <link href="~/Content/base/css/base.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    @*<link no-cdn href="~/smartadmin.custom.css" rel="stylesheet" media="screen, print" asp-append-version="true" />*@
+
+    <link href="~/tapps/smartadmin.custom.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/tapps/css/datagrid/datatables/datatables.bundle.css" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link no-cdn href="~/css/site.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/tapps/css/page-invoice.css?%20[sm]" rel="stylesheet" media="screen, print" asp-append-version="true" />
+    <link href="~/css/print.css" no-cdn rel="stylesheet" media="screen, print" asp-append-version="true"/>
+    @RenderSection("Header", required: false)
+</head>
+<body class="mod-bg-1">
+    <div class="container">
+        <div data-size="A4">
+            @RenderBody()
+        </div>
+    </div>
+    <script src="@(Client.Value.CdnUrl)/tapps/js/vendors.bundle.js"></script>
+    <script src="@(Client.Value.CdnUrl)/tapps/js/app.bundle.js"></script>
+    <script src="@(Client.Value.CdnUrl)/lib/fontawesome/5.14.0/js/all.min.js"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

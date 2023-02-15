@@ -1,0 +1,27 @@
+﻿@model HomeClose
+@{
+    ViewBag.Title = "Yönlendiriliyorsunuz";
+    Layout = "_LayoutPublic";
+}
+<div class="alert alert-@Model.Alert">@Model.Message</div>
+@section Scripts {
+    @if (Model.Close)
+    {
+        <script>
+            setInterval(function () { RedirectClose(); }, 5000);
+
+            function RedirectClose() {
+                if (window.opener) {
+                    window.close();
+                }
+                else {
+                    window.location.href = "/";
+                }
+            }
+        </script>
+    }
+}
+
+
+
+

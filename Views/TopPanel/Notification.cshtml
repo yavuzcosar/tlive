@@ -1,0 +1,56 @@
+﻿@inject IAnnounceService Announces
+@if (User.Identity.IsAuthenticated && LayoutOptions.Value.Notification && Announces != null)
+{
+    var notify = Announces.NotifyCache();
+    if (notify.Total > 0)
+    {
+        <div>
+            <a href="#" class="header-icon header-icon-bar" data-toggle="dropdown" loc-title-params="@notify.Total" loc-title="{0} yeni duyuru">
+                <i class="fal fa-bell"></i>
+                <span class="badge badge-icon">@notify.Total</span>
+            </a>
+            <div class="dropdown-menu dropdown-menu-animated dropdown-xl">
+                @if (notify.Items.Count() > 0)
+                {
+                    <div class="dropdown-header bg-trans-gradient d-flex justify-content-center align-items-center rounded-top mb-2">
+                        <h4 class="m-0 text-center color-white">
+                            @notify.Total <span loc="true"> yeni duyuru</span>
+                            @*<small class="mb-0 opacity-80">User Notifications</small>*@
+                        </h4>
+                    </div>
+                    <div class="custom-scroll h-100">
+                        <ul class="notification">
+                            @foreach (var item in notify.Items)
+                            {
+                                <li class="unread">
+                                    <a href="#announce-notify-@(item.AnnounceId)" class="d-flex align-items-center show-child-on-hover" data-toggle="modal">
+                                        <span class="d-flex flex-column flex-1">
+                                            <span class="name d-flex align-items-center">
+                                                @item.Title
+                                            </span>
+                                            <span class="fs-nano text-muted mt-1">@item.DateStart.ToFDate(false)</span>
+                                        </span>
+                                    </a>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="py-2 px-3 bg-faded d-block rounded-bottom text-right border-faded border-bottom-0 border-right-0 border-left-0">
+                        <a asp-controller="Announce" asp-action="List" class="fs-xs fw-500 ml-auto" loc="true">Tüm Duyurular</a>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a asp-controller="Announce" asp-action="Refresh" class="header-icon header-icon-bar">
+                <i class="fal fa-bell"></i>
+            </a>
+        </div>
+    }
+}
+
+
+

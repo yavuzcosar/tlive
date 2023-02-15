@@ -1,0 +1,159 @@
+﻿@using Toltek.Services.Dashboard
+<div class="settings-panel">
+    @if (Model is IDashboard)
+    {
+        var model = Model as IDashboard;
+        <div class="mt-4 d-table w-100 px-5">
+            <div class="d-table-cell align-middle">
+                <h5 class="p-0">
+                    Bilgi Kutularını Göster
+                </h5>
+            </div>
+        </div>
+        @foreach (var w in model.Dashboard.Widgets.OrderBy(o=>o.ColumnId).ThenBy(t=>t.Order))
+        {
+            <div class="list" id="fh">
+                <a href="#" class="btn btn-switch @(w.Enable?"active":"")" t-action="widget-toogle" t-target="@(w.WidgetId)"></a>
+                <span class="onoffswitch-title">
+                    <fa icon="@w.BoxIcon"></fa>
+                    @w.Title
+                </span>
+            </div>
+        }
+        <div class="pl-5 pr-3 py-3 bg-faded">
+            <div class="row no-gutters">
+                    <a href="#" class="btn btn-outline-danger fw-500 btn-block" t-action="dashboard-reset">Varsayılan Yerleşim</a>
+            </div>
+        </div>
+    }
+    <div class="mt-4 d-table w-100 px-5">
+        <div class="d-table-cell align-middle">
+            <h5 class="p-0">
+                Uygulama Görünümü
+            </h5>
+        </div>
+    </div>
+
+    <div class="list" id="fh">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="header-function-fixed"></a>
+        <span class="onoffswitch-title">Başlığı Sabitle</span>
+    </div>
+    <div class="list" id="nff">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="nav-function-fixed"></a>
+        <span class="onoffswitch-title">Sol Menüyü Sabitle</span>
+    </div>
+    <div class="list" id="nfm">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="nav-function-minify"></a>
+        <span class="onoffswitch-title">Sol Menüyü Küçült</span>
+    </div>
+    <div class="list" id="nfh">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="nav-function-hidden"></a>
+        <span class="onoffswitch-title">Sol Menüyü Gizle</span>
+    </div>
+
+    <div class="list" id="mmb">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-main-boxed"></a>
+        <span class="onoffswitch-title">Dar Görünüme Geç</span>
+    </div>
+    <div class="expanded">
+        <ul class="mb-3 mt-1">
+            <li>
+                <div class="bg-fusion-50" data-action="toggle" data-class="mod-bg-1"></div>
+            </li>
+            <li>
+                <div class="bg-warning-200" data-action="toggle" data-class="mod-bg-2"></div>
+            </li>
+            <li>
+                <div class="bg-primary-200" data-action="toggle" data-class="mod-bg-3"></div>
+            </li>
+            <li>
+                <div class="bg-success-300" data-action="toggle" data-class="mod-bg-4"></div>
+            </li>
+            <li>
+                <div class="bg-white border" data-action="toggle" data-class="mod-bg-none"></div>
+            </li>
+        </ul>
+        <div class="list" id="mbgf">
+            <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-fixed-bg"></a>
+            <span class="onoffswitch-title">Arkaplan resmini sabitle</span>
+        </div>
+    </div>
+    <div class="mt-4 d-table w-100 px-5">
+        <div class="d-table-cell align-middle">
+            <h5 class="p-0">
+                Erişilebilirlik
+            </h5>
+        </div>
+    </div>
+    <div class="list" id="mhc">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-high-contrast"></a>
+        <span class="onoffswitch-title">Yüksek Kontrastlı Metin</span>
+    </div>
+    <div class="list" id="mpc">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-pace-custom"></a>
+        <span class="onoffswitch-title">Yüklenirken İçeriği Gösterme </span>
+    </div>
+    <div class="mt-4 d-table w-100 px-5">
+        <div class="d-table-cell align-middle">
+            <h5 class="p-0">
+                Genel Görünüm
+            </h5>
+        </div>
+    </div>
+    <div class="list" id="mcbg">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-clean-page-bg"></a>
+        <span class="onoffswitch-title">Temiz Arkaplan</span>
+    </div>
+    <div class="list" id="mhni">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-hide-nav-icons"></a>
+        <span class="onoffswitch-title">Menü İkonlarını Gizle</span>
+    </div>
+    <div class="list" id="dan">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-disable-animation"></a>
+        <span class="onoffswitch-title">CSS Animasyonlarını Kapat</span>
+    </div>
+    <div class="list" id="mhic">
+        <a href="#" onclick="return false;" class="btn btn-switch" data-action="toggle" data-class="mod-hide-info-card"></a>
+        <span class="onoffswitch-title">Kişi Kartını Gizle</span>
+    </div>
+    <hr class="mb-0 mt-4">
+    <div class="mt-4 d-table w-100 pl-5 pr-3">
+        <div class="d-table-cell align-middle">
+            <h5 class="p-0">
+                Yazı Tipi Boyutu
+            </h5>
+        </div>
+    </div>
+    <div class="list mt-1">
+        <div class="btn-group btn-group-sm btn-group-toggle my-2" data-toggle="buttons">
+            <label class="btn btn-default btn-sm" data-action="toggle-swap" data-class="root-text-sm" data-target="html">
+                <input type="radio" name="changeFrontSize"> SM
+            </label>
+            <label class="btn btn-default btn-sm" data-action="toggle-swap" data-class="root-text" data-target="html">
+                <input type="radio" name="changeFrontSize" checked=""> MD
+            </label>
+            <label class="btn btn-default btn-sm" data-action="toggle-swap" data-class="root-text-lg" data-target="html">
+                <input type="radio" name="changeFrontSize"> LG
+            </label>
+            <label class="btn btn-default btn-sm" data-action="toggle-swap" data-class="root-text-xl" data-target="html">
+                <input type="radio" name="changeFrontSize"> XL
+            </label>
+        </div>
+    </div>
+    <hr class="mb-0 mt-4">
+    <div class="pl-5 pr-3 py-3 bg-faded">
+        <div class="row no-gutters">
+            <div class="col-6 pr-1">
+                <a href="#" class="btn btn-outline-danger fw-500 btn-block" data-action="app-reset">Ayarları Temizle</a>
+            </div>
+            @*<div class="col-6 pl-1">
+                    <a href="#" class="btn btn-danger fw-500 btn-block" data-action="factory-reset">Ayarları Sıfırla</a>
+                </div>*@
+        </div>
+    </div>
+</div>
+<style>
+    .widget-hidden{
+        display:none;
+    }
+</style>

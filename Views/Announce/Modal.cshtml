@@ -1,0 +1,85 @@
+﻿@model AnnounceView
+<div class="modal fade @(Model.ShowStartup && Model.IsNotify ?"ModalNotify":"")"
+     id="announce-@(Model.IsNotify?"notify-":"")@Model.AnnounceId"
+     tabindex="-1" role="dialog"
+     aria-labelledby="mlabel-@(Model.IsNotify?"notify-":"")@Model.AnnounceId">
+    <div class="modal-dialog modal-lg modal-dialog-centered" role="document" style="width: 90%;">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom:solid #dacbf1 1px;">
+                <h4 class="modal-title text-primary" id="mlabel-@(Model.IsNotify?"notify-":"")@Model.AnnounceId">
+                    <i class="fa fa-bullhorn text-primary"></i>
+                    @Model.Title
+                </h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Kapat">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body" style="min-height:400px!important;">
+                @Html.Raw(Model.Body)
+            </div>
+            @if (Model.Files != null && Model.Files.Count() > 0)
+            {
+            <div class="modal-footer" style="border-top:solid #dacbf1 1px;">
+                <div class="mr-auto">
+                    <b class="text-primary">Dosyalar </b>  :
+                    @foreach (var f in Model.Files)
+                    {
+                        <a target="_blank"
+                           class="badge border border-default text-default"
+                           style="margin-right:5px;" href="@Url.Content(f.FileUrl)">
+                            @f.FileName
+                        </a>
+                    }
+                </div>
+                </div>
+            }
+            <div class="modal-footer" style="border-top:solid #dacbf1 1px;">
+                @if (Model.UnitId.HasValue)
+                {
+                    <div class="mr-auto">
+                        <span class="badge border border-info text-info"
+                              style="margin-right:5px;">
+                            @Model.UnitName
+                        </span>
+                        @if (Model.CourseId.HasValue)
+                        {
+                            <span class="badge border border-warning text-warning"
+                                  style="margin-right:5px;">
+                                @Model.CourseName
+                            </span>
+                        }
+                        @if (Model.GroupId.HasValue)
+                        {
+                            <span class="badge border border-danger text-danger"
+                                  style="margin-right:5px;">
+                                @Model.GroupName
+                            </span>
+                        } <br />
+
+                    </div>
+                    <small class="text-muted">
+                        @Model.CDate.ToFDate(true) <br />
+                        @Model.CUName
+                    </small>
+
+                }
+                @if (User.UserId2().HasValue && !Model.Readed)
+                {
+                    <a style="margin-left:20px;"
+                       href="@Url.Action("Read","Announce",new {  id=Model.AnnounceId,ReturnUrl=Context.Request.GetDisplayUrl() })"
+                       t-button="true" t-color="Success" t-outline="true">
+                        <i class="ace-icon fa fa-check"></i>
+                        Okudum
+                    </a>
+                }
+                else
+                {
+                    <button type="button" t-button="true" t-color="Secondary" t-outline="true" data-dismiss="modal">
+                        <i class="fa fa-times"></i>
+                        Kapat
+                    </button>
+                }
+            </div>
+        </div>
+    </div>
+</div>

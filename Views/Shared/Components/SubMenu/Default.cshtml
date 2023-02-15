@@ -1,0 +1,58 @@
+﻿@model IMenuBase
+@{
+    var mode = Model.MenuItems.FirstOrDefault(t => t.Name == Model.Mode);
+    var title = (string)ViewBag.WTitle;
+    var showStats = false;
+    if (ViewBag.ShowStats != null && ViewBag.ShowStats == true)
+    {
+        showStats = true;
+    }
+    var groups = Model.MenuItems.Where(t => t.ShowMenu.Value && (!showStats || !t.ShowStats.Value)).OrderBy(o => o.ItemGroup).GroupBy(t => t.ItemGroup);
+    int i = 0;
+}
+
+<card class="h-100">
+    <card-header icon="fa fa-tasks" head="İşlemler"></card-header>
+    <card-body class=" p-1 mt-0">
+        <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            @foreach (var g in groups)
+            {
+                i++;
+                var items = Model.MenuItems.Where(m => m.ItemGroup == g.Key && (!showStats || !m.ShowStats.Value)).OrderBy(o => o.ItemIndex);
+                foreach (var item in items)
+                {
+
+                    if (item.ShowMenu.Value && (item.ShowAlways.Value || item.Badge > 0))
+                    {
+                        if (mode != null)
+                        {
+                            if (mode != null && item.Name == mode.Name || Model.MenuItems.Any(t => t.Name == mode.Name && t.ParentItem == item.Name))
+                            {
+                                item.ColorLabel = "";
+                            }
+                        }
+                        <a class="nav-link border @(Model.Mode == item.Name ? "active" : (string.IsNullOrEmpty(item.Color)?"": item.Color))"
+                           href="@item.Url">
+                            <fa icon="@item.Icon" />
+                            <span class="hidden-sm-down ml-1" localize="profile">
+                                @item.Title
+                            </span>
+                            @if (item.Badge > 0)
+                            {
+                                <span class="badge float-right @(Model.Mode == item.Name ? "badge-" : "border border") ">@item.Badge</span>
+                            }
+                        </a>
+                    }
+                }
+                if (i < groups.Count())
+                {
+                    <div class="border mb-4"></div>
+                } 
+            }
+        </div>
+    </card-body>
+</card>
+
+
+
+

@@ -1,0 +1,24 @@
+﻿@{
+    var lOptions = LayoutOptions.Value;
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <partial name="_Head" />
+    @RenderSection("Header", required: false)
+</head>
+<body class="mod-bg-1">
+    <div class="page-wrapper">
+        <div class="page-inner">
+            <div class="page-content-wrapper">
+                <main id="js-page-content" role="main" class="page-content">
+                    @RenderSection("PageHeading", required: false)
+                    @RenderBody()
+                </main>
+            </div>
+        </div>
+    </div>
+    <partial name="../Scripts/BasePlugins" />
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

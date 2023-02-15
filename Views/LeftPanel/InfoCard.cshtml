@@ -1,0 +1,62 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    var bgUrl = "~/tapps/img/card-backgrounds/cover-5-lg.png";
+    if (!string.IsNullOrEmpty(LayoutOptions.Value.InfoCardBackgroundUrl))
+        bgUrl = LayoutOptions.Value.InfoCardBackgroundUrl;
+    bool ShowScore = LayoutOptions.Value.InfoCardScore && ViewBag.ShowScore == true;
+    int? UserScore = ViewBag.UserScore;
+    <a asp-controller="User" asp-action="Profile">
+        <div class="info-card">
+            <img src="@(User.Picture(Client,Storage))"
+                 class="profile-image rounded-circle" alt="@User.FullName()" />
+            <div class="info-card-text">
+                <a href="/Account" class="d-flex align-items-center text-white">
+                    <span class="text-truncate text-truncate-sm d-inline-block">
+                        @User.FullName()
+                    </span>
+                </a>
+                <span class="d-inline-block text-truncate text-truncate-sm">
+                    @User.RoleFirstDesc()
+                </span>
+                @if (ShowScore && UserScore.HasValue)
+                {
+                    <br />
+                    <span class="d-inline-block text-truncate text-truncate-sm">
+                        <span class="badge bg-@(ScoreColor(UserScore))-900 text-white">@UserScore%</span>
+                    </span>
+                }
+            </div>
+            <img src="@bgUrl" class="cover" alt="cover" />
+            @*<a href="#" onclick="return false;" class="pull-trigger-btn" data-action="toggle"
+                   data-class="list-filter-active" data-target=".page-sidebar" data-focus="nav_filter_input">
+                    <i class="fal fa-angle-down"></i>
+                </a>*@
+        </div>
+    </a>
+}
+<style>
+    .info-card-score {
+        height: 6rem !important;
+    }
+
+    .nav-function-minify:not(.nav-function-top) .page-sidebar .info-card {
+        display: none !important;
+    }
+</style>
+
+@functions {
+    string ScoreColor(int? score)
+    {
+
+        if (score.HasValue)
+        {
+            if (score < 30)
+                return "danger";
+            else if (score < 70)
+                return "warning";
+            else
+                return "success";
+        }
+        return "default";
+    }
+}

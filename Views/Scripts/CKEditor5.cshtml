@@ -1,0 +1,35 @@
+﻿@model CKEditor
+@{
+    if (Model.Name == null)
+    {
+        Model.Name = Model.Id;
+    }
+    if (Model.BrowserUrl == null && Model.BrowseEnable)
+    {
+        Model.BrowserUrl = "/File/EditorBrowse?Folder=" + Model.Folder + "&Callback=" + Model.Callback + "&CallbackId=" + Model.Id;
+    }
+    if (Model.UploadUrl == null && Model.UploadEnable)
+    {
+        Model.UploadUrl =   "/File/EditorUpload?Folder=" + Model.Folder + "&Callback=" + Model.Callback + "&CallbackId=" + Model.Id;
+    }
+}
+@Html.Hidden(Model.Name, Model.Value)
+<div id="@(Model.Id)_EditorBody">
+    <style>
+       #@(Model.Id)_EditorBody .ck-editor__editable {
+          min-height: @(Model.Height)px;
+        }
+    </style>
+    <textarea id="@(Model.Id)_Editor" CKE="true" class="form-control"
+              placeholder="@Model.PlaceHolder"
+              TChecked="@Model.TChecked"
+              TIf="@Model.TIf"
+              TValues="@Model.TValues"
+              style="height:@(Model.Height)px">@Html.Raw(Model.Value)</textarea>
+    <script>
+        richEditor('@(Model.Id)', '@(Model.Height)px', "@Html.Raw(Model.BrowserUrl)", '@Html.Raw(Model.UploadUrl)');
+        $(window).on("message", function (e) {
+            alert(e.data); // Alerts "this is a message"
+        });
+    </script>
+</div>

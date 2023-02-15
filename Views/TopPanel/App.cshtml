@@ -1,0 +1,80 @@
+﻿@inject IMenuService MenuService
+@if (LayoutOptions.Value.Apps)
+{
+    <div class="app-shortcuts">
+        <a href="#" class="header-icon header-icon-bar" data-toggle="dropdown" loc-title="Uygulamalar">
+            <i class="fal fa-cube"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-animated w-auto h-auto">
+            <div class="dropdown-header bg-trans-gradient d-flex justify-content-center align-items-center rounded-top">
+                <h4 class="m-0 text-center color-white">
+                    <span loc="true">Kısayol</span>
+                    <small class="mb-0 opacity-80" loc="true">Uygulamalar</small>
+                </h4>
+            </div>
+            <style>
+                .app-list-item {
+                    height: 4rem;
+                    width: 6rem;
+                    margin: 5px 2px;
+                }
+
+                    .app-list-item .icon-stack {
+                        font-size: 2.5rem !important;
+                    }
+
+                        .app-list-item .icon-stack svg {
+                            width: 100% !important;
+                            overflow: visible;
+                            bottom: 10px;
+                        }
+
+                .app-list-name {
+                    margin-top: 5px;
+                    font-size: 0.7rem;
+                }
+            </style>
+            <div class="custom-scroll h-100">
+                <ul class="app-list">
+                    @foreach (var c in MenuService.Categories().OrderBy(o => o.Order))
+                    {
+                        var CategoryRoles = c.Roles == null || c.Roles.Split(',').Any(t => User.IsInRole(t));
+                        if (CategoryRoles)
+                        {
+
+                            @foreach (var client in c.Clients.Where(t => t.Show).OrderBy(o => o.Order))
+                            {
+                                if (!client.Active)
+                                {
+                                    client.Color = "color-fusion-500 opacity-50";
+                                }
+                                var roles = client.Roles == null || client.Roles.Split(',').Any(t => User.IsInRole(t));
+                                if (roles)
+                                {
+                                    <li>
+                                        <a href="@client.Url" class="app-list-item hover-white">
+                                            @if (string.IsNullOrEmpty(client.IconStack))
+                                            {
+                                                <i class="@client.Icon icon-stack fa-2x @(client.Color)"></i>
+                                            }
+                                            else
+                                            {
+                                                @(Html.Raw(client.IconStack.Replace("{Icon}", client.Icon).Replace("{Color}", client.Color)))
+                                            }
+                                            <span class="app-list-name" loc="true">@client.Title</span>
+                                        </a>
+                                    </li>
+                                }
+                            }
+                        }
+
+                    }
+
+
+
+                </ul>
+            </div>
+        </div>
+    </div>
+}
+

@@ -1,0 +1,15 @@
+﻿@using Toltek.Services.Announces
+@inject IAnnounceService Announces
+@if (User != null && User.Identity != null && User.Identity.IsAuthenticated && ViewBag.HideModals == null && Announces != null)
+{
+    var notify = Announces.NotifyCache();
+    @foreach (var item in notify.Items)
+    {
+        item.IsNotify = true;
+        <partial name="~/Views/Announce/Modal.cshtml" model="@item" />
+    }
+    <script>
+        $(".ModalNotify").first().modal();
+    </script>
+}
+

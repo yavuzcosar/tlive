@@ -1,0 +1,21 @@
+﻿@if (LayoutOptions.Value.Portal)
+{
+    if (!User.Identity.IsAuthenticated)
+    {
+        <div>
+
+            <a href="@Client.Value.PortalUrl" class="header-icon header-icon-bar" loc-title="Portala Git">
+                <i class="fal fa-globe"></i>
+            </a>
+        </div>
+    }
+    else
+    {
+        <div>
+            <a href="@Client.Value.PortalUrl/Account/Login" class="header-icon header-icon-bar" loc-title="Portala Git">
+                <i class="fal fa-globe"></i>
+            </a>
+        </div>
+    }
+
+}

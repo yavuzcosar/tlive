@@ -1,0 +1,34 @@
+﻿@if (ViewBag.RoleSelector == "true" && (User.IsInRole("Teacher") || User.IsInRole("Manager") || User.IsInRole("UManager")))
+{
+    <div class="app-shortcuts">
+        <a href="#" class="header-icon header-icon-bar" data-toggle="dropdown" loc-title="Rol Seç">
+            <i class="fa fa-@(this.SessionService.RoleId()<=2 || this.SessionService.RoleId()==5?"user-cog":"user-edit") text-primary"></i>
+        </a>
+        <div class="dropdown-menu dropdown-menu-animated w-auto h-auto">
+            @if (User.IsInRoles("Admin", "Manager"))
+            {
+                <a class="dropdown-item" asp-controller="Home" asp-action="SetRole" asp-route-role="2"
+                   asp-route-ReturnUrl="@Context.Request.GetDisplayUrl()">
+                    <i class="fa fa-user-cog text-info"></i>
+                    Yönetici
+                </a>
+            }
+            else if (User.IsInRole("UManager"))
+            {
+                <a class="dropdown-item" asp-controller="Home" asp-action="SetRole" asp-route-role="5"
+                   asp-route-ReturnUrl="@Context.Request.GetDisplayUrl()">
+                    <i class="fa fa-user-cog text-info"></i>
+                    B. Yönetici
+                </a>
+            }
+            @if (User.IsInRole("Teacher"))
+            {
+                <a class="dropdown-item" asp-controller="Home" asp-action="SetRole" asp-route-role="3"
+                   asp-route-ReturnUrl="@Context.Request.GetDisplayUrl()">
+                    <i class="fa fa-user-edit text-primary"></i>
+                    Eğitmen
+                </a>
+            }
+        </div>
+    </div>
+}
