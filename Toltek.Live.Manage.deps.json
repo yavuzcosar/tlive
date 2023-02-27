@@ -3489,14 +3489,6 @@
           "lib/net6.0/Toltek.Extensions.Localization.TagHelpers.dll": {}
         }
       },
-      "Toltek.Extensions.Multitenancy/2.6.0": {
-        "runtime": {
-          "Toltek.Extensions.Multitenancy.dll": {}
-        },
-        "compile": {
-          "Toltek.Extensions.Multitenancy.dll": {}
-        }
-      },
       "Toltek.Extensions.Template/2.6.0": {
         "runtime": {
           "lib/net6.0/Toltek.Extensions.Template.dll": {
@@ -3592,53 +3584,6 @@
         },
         "compile": {
           "lib/net6.0/Toltek.Web.CKEditor.dll": {}
-        }
-      },
-      "Toltek.Web.DataTable/2.6.0": {
-        "dependencies": {
-          "Toltek.Web.TagHelpers": "2.6.0"
-        },
-        "runtime": {
-          "lib/net6.0/Toltek.Web.DataTable.dll": {
-            "assemblyVersion": "2.6.0.0",
-            "fileVersion": "2.6.0.0"
-          }
-        },
-        "compile": {
-          "lib/net6.0/Toltek.Web.DataTable.dll": {}
-        }
-      },
-      "Toltek.Web.TagHelpers/2.6.0": {
-        "dependencies": {
-          "Toltek.Web": "2.6.0"
-        },
-        "runtime": {
-          "lib/net6.0/Toltek.Web.TagHelpers.dll": {
-            "assemblyVersion": "2.6.0.0",
-            "fileVersion": "2.6.0.0"
-          }
-        },
-        "compile": {
-          "lib/net6.0/Toltek.Web.TagHelpers.dll": {}
-        }
-      },
-      "Toltek.Web.TagHelpers.Bootstrap4/2.6.0": {
-        "dependencies": {
-          "Toltek.Web.TagHelpers": "2.6.0"
-        },
-        "runtime": {
-          "lib/net6.0/Toltek.Web.TagHelpers.Bootstrap4.dll": {
-            "assemblyVersion": "2.6.0.0",
-            "fileVersion": "2.6.0.0"
-          }
-        },
-        "resources": {
-          "lib/net6.0/tr/Toltek.Web.TagHelpers.Bootstrap4.resources.dll": {
-            "locale": "tr"
-          }
-        },
-        "compile": {
-          "lib/net6.0/Toltek.Web.TagHelpers.Bootstrap4.dll": {}
         }
       },
       "XmpCore/6.1.10.1": {
@@ -3744,6 +3689,14 @@
         },
         "compile": {
           "Toltek.Extensions.IE.dll": {}
+        }
+      },
+      "Toltek.Extensions.Multitenancy/2.6.0": {
+        "runtime": {
+          "Toltek.Extensions.Multitenancy.dll": {}
+        },
+        "compile": {
+          "Toltek.Extensions.Multitenancy.dll": {}
         }
       },
       "Toltek.Extensions.Tenancy/2.6.0": {
@@ -4158,6 +4111,44 @@
         },
         "compile": {
           "Toltek.Services.Storage.Abstractions.dll": {}
+        }
+      },
+      "Toltek.Web.DataTable/2.6.0": {
+        "dependencies": {
+          "Toltek.Web.TagHelpers": "2.6.0"
+        },
+        "runtime": {
+          "Toltek.Web.DataTable.dll": {}
+        },
+        "compile": {
+          "Toltek.Web.DataTable.dll": {}
+        }
+      },
+      "Toltek.Web.TagHelpers/2.6.0": {
+        "dependencies": {
+          "Toltek.Web": "2.6.0"
+        },
+        "runtime": {
+          "Toltek.Web.TagHelpers.dll": {}
+        },
+        "compile": {
+          "Toltek.Web.TagHelpers.dll": {}
+        }
+      },
+      "Toltek.Web.TagHelpers.Bootstrap4/2.6.0": {
+        "dependencies": {
+          "Toltek.Web.TagHelpers": "2.6.0"
+        },
+        "runtime": {
+          "Toltek.Web.TagHelpers.Bootstrap4.dll": {}
+        },
+        "resources": {
+          "tr/Toltek.Web.TagHelpers.Bootstrap4.resources.dll": {
+            "locale": "tr"
+          }
+        },
+        "compile": {
+          "Toltek.Web.TagHelpers.Bootstrap4.dll": {}
         }
       },
       "Microsoft.AspNetCore.Antiforgery.Reference/6.0.0.0": {
@@ -7856,11 +7847,6 @@
       "path": "toltek.extensions.localization.taghelpers/2.6.0",
       "hashPath": "toltek.extensions.localization.taghelpers.2.6.0.nupkg.sha512"
     },
-    "Toltek.Extensions.Multitenancy/2.6.0": {
-      "type": "project",
-      "serviceable": false,
-      "sha512": ""
-    },
     "Toltek.Extensions.Template/2.6.0": {
       "type": "package",
       "serviceable": true,
@@ -7910,27 +7896,6 @@
       "path": "toltek.web.ckeditor/2.6.0",
       "hashPath": "toltek.web.ckeditor.2.6.0.nupkg.sha512"
     },
-    "Toltek.Web.DataTable/2.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-4EAIS3TuyNP4WuuqbGl3tF6AVmnJ00+tD/cy93F54eonRCLspiO0YOMtDNuDfdF3LcEqMr181uQtPYcJht+gcw==",
-      "path": "toltek.web.datatable/2.6.0",
-      "hashPath": "toltek.web.datatable.2.6.0.nupkg.sha512"
-    },
-    "Toltek.Web.TagHelpers/2.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-j+g2t/E83mNhRbGByoSJxYyiTyr+rh/660hxawGLwpvAZ1IhAj2YTT9zJLHPdYp+fNRWlHMh2LqiSJ01+HfS8w==",
-      "path": "toltek.web.taghelpers/2.6.0",
-      "hashPath": "toltek.web.taghelpers.2.6.0.nupkg.sha512"
-    },
-    "Toltek.Web.TagHelpers.Bootstrap4/2.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-L/0+JBaCouqvbIgFy5RRYcmc7JhUqSXzsHwCyx+FNxuLARrAL9JCkIoA5WkW4TDRy7FG2d42T1/LbjP5+G8GEw==",
-      "path": "toltek.web.taghelpers.bootstrap4/2.6.0",
-      "hashPath": "toltek.web.taghelpers.bootstrap4.2.6.0.nupkg.sha512"
-    },
     "XmpCore/6.1.10.1": {
       "type": "package",
       "serviceable": true,
@@ -7971,6 +7936,11 @@
       "sha512": ""
     },
     "Toltek.Extensions.IE/2.6.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Toltek.Extensions.Multitenancy/2.6.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
@@ -8106,6 +8076,21 @@
       "sha512": ""
     },
     "Toltek.Services.Storage.Abstractions/0.1.11": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Toltek.Web.DataTable/2.6.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Toltek.Web.TagHelpers/2.6.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Toltek.Web.TagHelpers.Bootstrap4/2.6.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""

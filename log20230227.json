@@ -1,0 +1,13 @@
+[17:25:18 INF] toltek.live.manage.startup <s:Toltek.IAppStartup>
+[17:26:09 INF] toltek.live.manage.startup <s:Toltek.IAppStartup>
+[17:26:53 WRN] No store type was specified for the decimal property 'QScore' on entity type 'ExamWeightsListResult'. This will cause values to be silently truncated if they do not fit in the default precision and scale. Explicitly specify the SQL server column type that can accommodate all the values in 'OnModelCreating' using 'HasColumnType', specify precision and scale using 'HasPrecision', or configure a value converter using 'HasConversion'. <s:Microsoft.EntityFrameworkCore.Model.Validation>
+[17:26:54 WRN] toltek.tenancy.factory.starting:company_localhost <s:Toltek.TenancyOptionsFactory>
+[17:26:55 WRN] toltek.tenancy.factory.started:company_localhost <s:Toltek.TenancyOptionsFactory>
+[17:26:55 INF] toltek.cache.memory.tryget:53_Storage <s:Toltek.Caching.ICacheService>
+[17:26:55 INF] toltek.cache.memory.set:53_Storage-expire:"3.00:00:00" <s:Toltek.Caching.ICacheService>
+[17:27:08 INF] toltek.cache.memory.tryget:53_Layout <s:Toltek.Caching.ICacheService>
+[17:27:08 INF] toltek.cache.memory.set:53_Layout-expire:"3.00:00:00" <s:Toltek.Caching.ICacheService>
+[17:27:08 INF] toltek.cache.memory.tryget:53_Theme <s:Toltek.Caching.ICacheService>
+[17:27:08 INF] toltek.cache.memory.set:53_Theme-expire:"3.00:00:00" <s:Toltek.Caching.ICacheService>
+[17:27:08 INF] toltek.cache.memory.tryget:53_toltek.live.manage_Client <s:Toltek.Caching.ICacheService>
+[17:27:08 INF] toltek.cache.memory.set:53_toltek.live.manage_Client-expire:"3.00:00:00" <s:Toltek.Caching.ICacheService>
