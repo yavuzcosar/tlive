@@ -1,14 +1,5 @@
 ﻿@inject IMenuService MenuService
-<ul id="js-nav-menu" class="nav-menu">
-    <!--<li class="nav-title nav-title-client pr-0">
-        <i class=" @(Client.Value.ClientIcon) fa-2x"></i>
-        <span loc="true">
-            @(Client.Value.ClientName)
-        </span>-->
-    @*<a href="@Client.Value.Authority" class="float-right mr-0">
-            <i class="fa fa-home"></i>
-        </a>*@
-    <!--</li>-->
+<ul id="js-nav-menu" class="nav-menu"> 
     @foreach (var cat in MenuService.Menu().GroupBy(g => g.Category))
     {
         <li class="nav-title py-2 my-0" style="color:#fdfcffab" localize="@cat.Key">@cat.Key</li>

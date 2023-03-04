@@ -1,4 +1,6 @@
-﻿<div class="page-logo" title="@Company.Value.Name">
+﻿@if (Company.Value!=null && Client.Value!=null && Theme.Value!=null)
+{ 
+<div class="page-logo" title="@Company.Value.Name">
     @*data-toggle="modal" data-target="#modal-shortcut" multitenantlarda geçiş için *@
     <a href="/" class="page-logo-link press-scale-down d-flex align-items-center">
         <img data-html="@(Client.Value.CdnUrl)/tapps/img/logo.png" class="img-long"
@@ -11,3 +13,4 @@
             <i class="fal fa-angle-down d-inline-block ml-1 fs-lg color-primary-300"></i>*@
     </a>
 </div>
+}
