@@ -1,6 +1,9 @@
 document.addEventListener("DOMContentLoaded", function (event) {
     var app = new Vue({
         el: "#liveApp",
+        components: {
+            apexchart: VueApexCharts,
+        },
         data: {
             connection: "",
             Connected: false,
@@ -9,7 +12,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             LiveBegin: false,
             LiveData: "",
             LiveTick: "",
-            LiveProgress: 100,
+            LiveProgress: 100, 
 
             LogsLoaded: false,
             LogsData: "",
@@ -24,7 +27,46 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
             StatsBegin: false,
             StatsTick: "",
-            StatsProgress: 100
+            StatsProgress: 100,
+
+            LinesLoaded: true,
+            LinesBegin: false,
+            LinesData: [{
+                name: "Oturum",
+                data: [
+                    {
+                        x: "08/03/2023 10:00",
+                        y: 10
+                    }
+                ]}, 
+            ], 
+            chartOptions: {
+                chart: {
+                    height: 350,
+                    type: 'line',
+                    zoom: {
+                        enabled: false
+                    }, 
+                    toolbar: {
+                        show: false
+                    }
+                },
+                //xaxis: {
+                //    //type: 'datetime'
+                //   // categories: ["09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00", "17:00", "18:00", "19:00", "20:00"]
+                //},
+                xaxis: {
+                    type: "datetime"
+                },
+                colors: ['#77B6EA', '#39a1f4','#a38cc6'],
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    curve: 'smooth'
+                }
+                
+            }
         },
         methods: {
 
@@ -107,6 +149,14 @@ document.addEventListener("DOMContentLoaded", function (event) {
                 v.LiveData = d;
                 v.LiveLoaded = true;
                 console.log("LiveLoad", d);
+            });
+            v.connection.on("LinesLoad", function (d) {
+                v.LinesBegin = false;
+                v.LinesData = d;
+                v.LinesLoaded = true; 
+               // var me = this 
+               // me.$refs.chart.updateSeries(d);
+               //console.log("LinesLoad", d);
             });
             v.connection.on("LogsLoad", function (logs) {
                 v.LogsData = logs;

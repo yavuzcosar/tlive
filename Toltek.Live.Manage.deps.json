@@ -3561,20 +3561,6 @@
           "lib/net6.0/Toltek.Web.dll": {}
         }
       },
-      "Toltek.Web.Charts/2.6.0": {
-        "dependencies": {
-          "Toltek.Charts": "2.6.0"
-        },
-        "runtime": {
-          "lib/net6.0/Toltek.Web.Charts.dll": {
-            "assemblyVersion": "2.6.0.0",
-            "fileVersion": "2.6.0.0"
-          }
-        },
-        "compile": {
-          "lib/net6.0/Toltek.Web.Charts.dll": {}
-        }
-      },
       "Toltek.Web.CKEditor/2.6.0": {
         "runtime": {
           "lib/net6.0/Toltek.Web.CKEditor.dll": {
@@ -4111,6 +4097,17 @@
         },
         "compile": {
           "Toltek.Services.Storage.Abstractions.dll": {}
+        }
+      },
+      "Toltek.Web.Charts/2.6.0": {
+        "dependencies": {
+          "Toltek.Charts": "2.6.0"
+        },
+        "runtime": {
+          "Toltek.Web.Charts.dll": {}
+        },
+        "compile": {
+          "Toltek.Web.Charts.dll": {}
         }
       },
       "Toltek.Web.DataTable/2.6.0": {
@@ -7882,13 +7879,6 @@
       "path": "toltek.web/2.6.0",
       "hashPath": "toltek.web.2.6.0.nupkg.sha512"
     },
-    "Toltek.Web.Charts/2.6.0": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-npRqUjp4OV95WMe3+YRYJPBhQodHybDOQWyRDG8eYqOIF/mxmsgua6IO20WnG5XIfrwnT06N4NqPj3fHmNYDFg==",
-      "path": "toltek.web.charts/2.6.0",
-      "hashPath": "toltek.web.charts.2.6.0.nupkg.sha512"
-    },
     "Toltek.Web.CKEditor/2.6.0": {
       "type": "package",
       "serviceable": true,
@@ -8076,6 +8066,11 @@
       "sha512": ""
     },
     "Toltek.Services.Storage.Abstractions/0.1.11": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Toltek.Web.Charts/2.6.0": {
       "type": "project",
       "serviceable": false,
       "sha512": ""
