@@ -1,5 +1,5 @@
 ﻿"use strict";
-var connection = new signalR.HubConnectionBuilder().withUrl(serverUrl, { transport: signalR.HttpTransportType.LongPolling }).build();
+var connection = new signalR.HubConnectionBuilder().withUrl(serverUrl).build();
 connection.on("Executing", function (id, output) {
     document.getElementById("btnRun").disabled = true;
     var li = document.createElement("li");
@@ -22,7 +22,7 @@ connection.on("Executing", function (id, output) {
     }
 });
 
-connection.start().then(function () {
+connection.start({ withCredentials: false }).then(function () {
     document.getElementById("btnRun").disabled = false;
 }).catch(function (err) {
     return console.error(err.toString());
