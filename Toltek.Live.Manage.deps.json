@@ -7742,7 +7742,7 @@
     "Toltek/2.6.0": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-eYmm4KU8CGnf8zk5ByoGazcm1dpYcTC8AhCL/KnfpFuMr/mSSgkHmxcZoXV3uu8QFRDKccbWOHEuQFZGYM465Q==",
+      "sha512": "sha512-aNrUs3uvrytRD67EwlUhfjvPw3NUshUIjb8JZFaCuKu/KWDRoHopOrieMPD4wVgQVgpXXOc5kzR3Kh2NAgkM5Q==",
       "path": "toltek/2.6.0",
       "hashPath": "toltek.2.6.0.nupkg.sha512"
     },
